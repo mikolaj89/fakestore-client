@@ -12,7 +12,7 @@ export const CartItemsList = () => {
     productId: number,
     e: ChangeEvent<HTMLInputElement>
   ) => {
-     // handle onKeyDown to accept backspace https://fake-jira-issue-link.com
+     // adjust to accept backspace https://fake-jira-issue-link.com
     if(e.target.value === '' || isNaN(parseInt(e.target.value))) {
       return;
     } 

@@ -1,40 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# FakeStore Client
 
-## Getting Started
+This is a **Next.js** client for interacting with the FakeStore API. It allows users to browse product categories and add items to the cart. Note - since Fakestore API doesn't save/update cart items by persisting changes in DB, all crucial cart operations are performed client-side.
 
-First, run the development server:
+## 🚀 Getting Started
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### **1. Clone the Repository**
+```sh
+git clone https://github.com/mikolaj89/fakestore-client.git
+cd fakestore-client
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### **2. Install Dependencies**
+Make sure you have **Node.js (v18 or later)** installed, then run:
+```sh
+npm install
+```
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+### **3. Run the Development Server**
+To start the local development server, use:
+```sh
+npm run dev
+```
+This will start the Next.js app on `http://localhost:3000/`.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+### **4. Build for Production**
+To create an optimized production build:
+```sh
+npm run build
+```
+After building, start the production server:
+```sh
+npm run start
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+## ⚡ Technologies Used
+- **Next.js** (v15)
+- **React** (v19)
+- **TypeScript**
+- **SCSS** for styling
+- **ESLint** for linting
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Additional Commands
+- **Lint Code:**
+  ```sh
+  npm run lint
+  ```
 
-## Learn More
+## 📌 Notes
+- This project uses the **FakeStore API** (`https://fakestoreapi.com/`).
+- Data does **not** persist when adding/updating items in the cart.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
