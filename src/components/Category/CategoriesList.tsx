@@ -1,6 +1,7 @@
 import { CategoryName } from "@/types/types";
-import styles from "../../styles/layout.module.scss";
+import styles from "./CategoriesList.module.scss";
 import Link from "next/link";
+import { capitalizeFirstLetter } from "@/utils/text-utils";
 
 export const CategoriesList = ({
   categories,
@@ -12,7 +13,7 @@ export const CategoriesList = ({
       {/* items could be extracted to separate component if bigger */}
       {categories.map((category: string) => (
         <li key={category} className={styles.categoryItem}>
-          <Link href={`/category/${category}`}>{category}</Link>
+          <Link href={`/category/${category}`}> {capitalizeFirstLetter(category)}</Link>
         </li>
       ))}
     </ul>

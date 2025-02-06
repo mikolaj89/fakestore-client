@@ -10,7 +10,22 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (!name || typeof name !== "string") {
     return { notFound: true };
   }
-  const categoryProducts = await getCategoryItems(name);
+
+  let categoryProducts: CategoryProduct[];
+
+  try {
+    categoryProducts = await getCategoryItems(name);
+  } catch (error) {
+    console.error("Error fetching category items:", error);
+
+    return {
+      redirect: {
+        destination: "/error",
+        permanent: false,
+      },
+    };
+  }
+
   return { props: { categoryProducts, name } };
 };
 

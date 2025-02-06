@@ -1,7 +1,7 @@
 import Link from "next/link";
-import styles from "../styles/layout.module.scss";
+import styles from "./Navbar.module.scss";
 import Image from "next/image";
-import CartIcon from "../../public/cart-icon.svg";
+import CartIcon from "../../../public/cart-icon.svg";
 import { useCart } from "@/providers/CartProvider";
 
 export const Navbar = () => {

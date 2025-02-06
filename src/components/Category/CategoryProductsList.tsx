@@ -13,15 +13,17 @@ const ProductItem = ({ product }: { product: CategoryProduct }) => {
 
   const onAddToCart = async (product: CategoryProduct) => {
     try {
-      // this api request is just to show intent (doesn't persist data in BE). In real life scenario, after successful POST, we would:
+
+      //  API request is just to show intent (here it doesn't persist data in BE). In real life scenario, after successful POST, we would:
       // 1. trigger FETCH_SUCCESS state action
       // 2. re-fetch fresh cart from API (if not returned from this response)
       // 3. trigger a state update such UPDATE_CART
       await addToCartPOST(product.id, DEFAULT_QUANTITY);
       cartState.addToCart(product, DEFAULT_QUANTITY);
       alert("Added to cart");
-    } catch {
-      console.error("Error adding to cart");
+    } catch (error) {
+      console.error("Error adding to cart:", error);
+      alert("Failed to add item to cart. Please try again.");
     }
   };
 

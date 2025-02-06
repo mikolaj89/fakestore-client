@@ -1,0 +1,33 @@
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    background-color: #fff;
+    color: grey;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .navContainer {
+    max-width: 1200px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    align-items: center;
+  }
+  
+  .cartLink {
+    display: flex;
+    align-items: center;
+  }
+
+  .cartIcon {
+    font-size: 1.5rem;
+    width: 40px;
+    height: 40px;
+    color: #333;
+    cursor: pointer;
+  }
+  
