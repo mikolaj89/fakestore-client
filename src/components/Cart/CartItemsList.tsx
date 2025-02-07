@@ -4,6 +4,7 @@ import Image from "next/image";
 import styles from "./CartItemsList.module.scss";
 import { ChangeEvent, useState } from "react";
 import { CartItem as CartItemType } from "@/types/types";
+import { CART_IMAGE_SIZE, MAX_QUANTITY } from "@/utils/constants";
 
 type CartItemProps = {
   product: CartItemType;
@@ -25,7 +26,12 @@ const CartItem = ({ product, onQuantityChange, onDelete }: CartItemProps) => {
 
   return (
     <li className={styles.cartProduct} key={product.id}>
-      <Image src={product.image} alt={product.title} width={50} height={50} />
+      <Image
+        src={product.image}
+        alt={product.title}
+        width={CART_IMAGE_SIZE}
+        height={CART_IMAGE_SIZE}
+      />
       <div>
         <p className={styles.title}>{product.title}</p>
         <p className={styles.price}>{formatPrice(parseInt(product.price))}</p>
@@ -37,7 +43,7 @@ const CartItem = ({ product, onQuantityChange, onDelete }: CartItemProps) => {
             onChange={(e) => setQuantityValue(e.target.value)}
             type="number"
             min={1}
-            max={30} // example max value
+            max={MAX_QUANTITY} // example max value, should be defined as const in some config file
             value={quantityValue}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
