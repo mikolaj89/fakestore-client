@@ -7,9 +7,11 @@ export const BreadCrumbs = ({ categoryName }: { categoryName: string }) => (
     <Link className={styles.link} href="/">
       Home
     </Link>
-    {" / "} <span> Category </span> {" / "}
-    <span className={styles.active}>
-      {capitalizeFirstLetter(categoryName)}
-    </span>
+    {" / "}
+    <Link className={styles.link} href="/">
+      Categories
+    </Link>
+    {" / "}
+    <span className={styles.active}>{capitalizeFirstLetter(categoryName)}</span>
   </div>
 );

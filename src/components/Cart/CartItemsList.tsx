@@ -36,6 +36,8 @@ const CartItem = ({ product, onQuantityChange, onDelete }: CartItemProps) => {
             onBlur={(e) => onBlur(product.id, e)}
             onChange={(e) => setQuantityValue(e.target.value)}
             type="number"
+            min={1}
+            max={30} // example max value
             value={quantityValue}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
