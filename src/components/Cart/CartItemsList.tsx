@@ -2,7 +2,7 @@ import { formatPrice } from "@/utils/text-utils";
 import { useCart } from "@/providers/CartProvider";
 import Image from "next/image";
 import styles from "./CartItemsList.module.scss";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import { CartItem as CartItemType } from "@/types/types";
 
 type CartItemProps = {
@@ -14,11 +14,15 @@ type CartItemProps = {
   onDelete: (productId: number) => void;
 };
 
-const CartItem = ({
-  product,
-  onQuantityChange,
-  onDelete,
-}: CartItemProps) => {
+const CartItem = ({ product, onQuantityChange, onDelete }: CartItemProps) => {
+  const [quantityValue, setQuantityValue] = useState(
+    product.quantity.toString()
+  );
+
+  const onBlur = (productId: number, e: ChangeEvent<HTMLInputElement>) => {
+    onQuantityChange(productId, e);
+  };
+
   return (
     <li className={styles.cartProduct} key={product.id}>
       <Image src={product.image} alt={product.title} width={50} height={50} />
@@ -29,9 +33,15 @@ const CartItem = ({
       <div className={styles.options}>
         <div>
           <input
-            onChange={(e) => onQuantityChange(product.id, e)}
+            onBlur={(e) => onBlur(product.id, e)}
+            onChange={(e) => setQuantityValue(e.target.value)}
             type="number"
-            value={product.quantity}
+            value={quantityValue}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                (e.target as HTMLInputElement).blur(); // Type assertion fixes TypeScript error. We could also use a ref to get the input element.
+              }
+            }}
           />
 
           <button onClick={() => onDelete(product.id)}>Remove</button>
@@ -49,13 +59,8 @@ export const CartItemsList = () => {
     productId: number,
     e: ChangeEvent<HTMLInputElement>
   ) => {
-    // adjust to accept  backspace when clearing one digit value https://fake-jira-issue-link.com
-    if(e.target.value === '' || isNaN(parseInt(e.target.value))) {
-      return;
-    } 
-
     const quantity = parseInt(e.target.value);
-    if (quantity === 0) {
+    if (quantity === 0 || isNaN(parseInt(e.target.value))) {
       removeFromCart(productId);
       return;
     }
