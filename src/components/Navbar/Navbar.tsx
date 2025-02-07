@@ -8,7 +8,7 @@ export const Navbar = () => {
   const { cartItemsCount} = useCart();
   
   return (
-    <nav className={styles.nav}>
+    <nav aria-label="Main navigation" className={styles.nav}>
       <div className={styles.navContainer}>
         <Link href="/">Home</Link>
         <Link className={styles.cartLink} href="/cart">

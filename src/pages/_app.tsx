@@ -8,9 +8,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <CartProvider>
       <Navbar />
-      <div className="container">
+      <main aria-label="Main content" className="container">
         <Component {...pageProps} />
-      </div>
+      </main>
     </CartProvider>
   );
 }

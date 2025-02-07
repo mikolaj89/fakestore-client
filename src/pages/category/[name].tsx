@@ -4,6 +4,7 @@ import { CategoryProductsList } from "@/components/Category/CategoryProductsList
 import { CategoryProduct } from "@/types/types";
 import { capitalizeFirstLetter } from "@/utils/text-utils";
 import { GetServerSideProps } from "next";
+import Head from "next/head";
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { name } = context.params ?? {};
@@ -36,14 +37,36 @@ const CategoryPage = ({
   categoryProducts: CategoryProduct[];
   name: string;
 }) => {
+  const categoryName = capitalizeFirstLetter(name);
   return (
-    <div>
+    <>
+    <Head>
+      <title>FakeStore - {categoryName} category</title>
+      <meta
+        name="description"
+        content={`Products in ${categoryName} category`}
+      />
+      <meta name="robots" content="index, follow" />
+      <meta
+        property="og:title"
+        content={`FakeStore - ${categoryName} category`}
+      />
+      <meta
+        property="og:description"
+        content={`Products in ${categoryName} category`}
+      />
+      <meta property="og:type" content="website" />
+    </Head>
+    
       <BreadCrumbs categoryName={name} />
+      <header>
       <h1>
-        {capitalizeFirstLetter(name)}: {categoryProducts.length}
+        {categoryName}: {categoryProducts.length}
       </h1>
+      </header>
       <CategoryProductsList categoryProducts={categoryProducts} />
-    </div>
+    
+    </>
   );
 };
 

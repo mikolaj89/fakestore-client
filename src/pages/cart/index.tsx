@@ -12,9 +12,13 @@ const CartPage = () => {
 
   return (
     <>
-      <h1>Cart</h1>
-      <h2>Total price: {formatPrice(totalPrice)}</h2>
-      <CartItemsList />
+      <header>
+        <h1>Cart</h1>
+      </header>
+      <section>
+        <h2>Total price: {formatPrice(totalPrice)}</h2>
+        <CartItemsList />
+      </section>
     </>
   );
 };
